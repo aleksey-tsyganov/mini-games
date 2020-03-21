@@ -1,3 +1,5 @@
+package game;
+
 import java.util.Scanner;
 
 public class Main {
@@ -8,11 +10,8 @@ public class Main {
         Validation.validation(userName);
     }
 
-    public static void startGame(String user){
-        System.out.println("Choose the action");
-        System.out.println("1. Play 'Guess the number'");
-        System.out.println("2. Play 'Riddle the number'");
-        System.out.println("3. Exit");
+    public static void startGame(){
+        System.out.println("Choose the action \n1. Play 'Guess the number' \n2. Play 'Riddle the number' \n3. Exit");
         String game = new Scanner(System.in).nextLine();
 
         if (game.equals("1")){
@@ -23,7 +22,17 @@ public class Main {
             System.out.println("See you");
         }else{
             System.out.println("Wrong action");
-            startGame(user);
+            startGame();
+        }
+    }
+
+    public static void oneMoreGame(){
+        System.out.println("Want to play one more time? Yes/No");
+        String more = new Scanner(System.in).nextLine();
+        if(more.equals("Yes")){
+            startGame();
+        }else {
+            System.out.println("See you!");
         }
     }
 

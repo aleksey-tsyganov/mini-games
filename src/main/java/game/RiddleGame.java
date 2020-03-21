@@ -1,48 +1,47 @@
-import java.util.Random;
+package game;
+
 import java.util.Scanner;
 
-public class RiddleGame extends GuessGame{
+public class RiddleGame{
+
+    static int maxNum = 100;
+    static int minNum = 0;
 
     public static void userNumberPick(){
         System.out.println("Choose the number from 0 to 100");
         System.out.println("Please, type 'Загадал'");
         String picked = new Scanner(System.in).nextLine();
         if(picked.equals("Загадал")){
-            Random rand = new Random();
-            int upperbound = 101;
-            int int_random = rand.nextInt(upperbound);
-            checkNumber(int_random);
+            checkNumber(50);
         }
     }
 
     public static void checkNumber (int randomInt) {
-        System.out.println("You guess " + randomInt + "?");
-        System.out.println("Загаданное число 'Меньше', 'Больше', 'Правильно'");
+        System.out.println("You guess " + randomInt + "? \nЗагаданное число 'Меньше', 'Больше', 'Правильно'");
         String right = new Scanner(System.in).nextLine();
         if (right.equals("Больше")){
             increaseNumber(randomInt);
         }else if (right.equals("Меньше")){
             decreaseNumber(randomInt);
-        }else {
+        }else if (right.equals("Правильно")){
             System.out.println("Bingo");
-            System.out.println("Want tp play one more time? Yes/No");
-            String more = new Scanner(System.in).nextLine();
-
-            if(more.equals("Yes")){
-                Main.main(null);
-            }else {
-                System.out.println("See you!");
-            }
+            Main.oneMoreGame();
+        }else {
+            System.out.println("You should type 'Меньше', 'Больше', 'Правильно'");
+            checkNumber(randomInt);
         }
     }
 
     public static void decreaseNumber(int num){
-        num = num - 1;
+        maxNum = num - 1;
+        num = (minNum + maxNum) / 2;
         checkNumber(num);
     }
 
     public static void increaseNumber(int num){
-        num = num + 1;
+        minNum = num + 1;
+        num = (minNum + maxNum) / 2;
         checkNumber(num);
     }
 }
+

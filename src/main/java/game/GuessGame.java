@@ -1,3 +1,5 @@
+package game;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -6,9 +8,9 @@ public class GuessGame {
     public static void randomNumberPick(){
         Random rand = new Random();
         int upperbound = 101;
-        int int_random = rand.nextInt(upperbound);
+        int intRandom = rand.nextInt(upperbound);
         System.out.println("I picked the number");
-        game(int_random);
+        game(intRandom);
     }
 
     public static void game(int randInt) {
@@ -32,14 +34,7 @@ public class GuessGame {
             game(randomInt);
         }else {
             System.out.println("Bingo");
-            System.out.println("Want tp play one more time? Yes/No");
-            String more = new Scanner(System.in).nextLine();
-
-            if(more.equals("Yes")){
-                Main.main(null);
-            }else {
-                System.out.println("See you!");
-            }
+            Main.oneMoreGame();
         }
     }
 }
